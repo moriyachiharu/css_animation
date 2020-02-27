@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 72px;
+        height: 72px;
+        position: relative;
+        transform-style: preserve-3d;
+        /* 遠近法を設定する */
+        perspective: 1000px;
+        /* 変化前、変化後を1秒間かけてアニメーションさせる */
+        transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .onFrip {
+        transform: rotateY(180deg);
+      }
+      .icon {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+      }
+      .back {
+        transform: rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="wrap">
+      <div class="icon front">
+        <img
+          src="greenCheck.png"
+        />
+      </div>
+      <div class="icon back">
+        <img
+          src="grayCheck.png"
+        />
+      </div>
+    </div>
+    <script>
+      window.onload = function() {
+        const wrap = document.getElementById("wrap");
+        wrap.addEventListener(
+          "click",
+          function() {
+            wrap.classList.toggle("onFrip");
+          },
+          false
+        );
+      };
+    </script>
+  </body>
+</html>
